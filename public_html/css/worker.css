@@ -1,0 +1,28 @@
+.navbar-header{
+    width: 100%;
+}
+
+.user-name{
+    color: white;
+}
+
+.test-btn-right{
+    float:right;
+}
+
+.test-h1-align{
+    text-align: center;
+}
+
+footer{
+    color: darkblue;
+}
+
+.tests-container-style{
+    text-align: center;
+}
+
+.new-task-creator{
+    border: 1px solid gray;
+    border-radius: 5px;
+}

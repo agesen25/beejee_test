@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BeeJee test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="/js/jquery-3.6.0.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/worker.js"></script>        
+        
+        <link href="/css/bootstrap.min.css" rel="stylesheet">        
+        <link href="/css/worker.css" rel="stylesheet">    
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md  bg-secondary">  
+            <div class="user-name ml-auto"></div>
+            <button class="btn btn-info test-btn-right ml-auto" onclick="authorization_menu_toggle()" type="button"></button>
+        </nav>
+        
+        <div class = "container">
+            <div class = "row">
+                <div class="col-md-6 offset-md-3">
+                    <h4 class="alert alert-info m-2 test-h1-align">Добавить задачу</h4>
+                </div>                
+            </div>
+            
+            <div class = "row">
+                <div class="col-md-12 ml-4 mr-4">
+                    <form class="p-2 mb-2 new-task-creator">
+                            <div class = "row">
+                                <div class="col-md-6 mb-2">
+                                    <label for="user-name" class="form-label">Имя пользователя</label>
+                                    <input type="text" id="user-name" class="form-control" placeholder="Введите имя" required>
+                                    <div class="invalid-feedback">Ошибка ввода (пустое поле, или используются недопустимые символы)</div>
+                                </div>
+                                    <div class="col-md-6 mb-2">
+                                    <label for="user-email" class="form-label">Email пользователя</label>
+                                    <input type="text" id="user-email" class="form-control" placeholder="Введите email" required>
+                                    <div class="invalid-feedback">Email введен некорректно</div>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class="col-md-12 mb-2">
+                                    <label for="user-task" class="form-label">Задание</label>
+                                    <textarea class="form-control" id="user-task" placeholder="Введите задание" required></textarea>
+                                    <div class="invalid-feedback">Пустое поле</div>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class="col-md-6 text-left">
+                                    <button id="task-save-button" class="btn btn-primary" onclick="new_task_save(this)" type="button">Сохранить</button>
+                                    <button id="task-status" class="btn btn-light" onclick="task_status_change(this)" type="button" disabled></button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button id="task-edited" class="btn btn-light" type="button" disabled></button>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+            </div>
+            
+            <div class = "row">
+                <div class="col-md-12 ml-4 mr-4" id="sorting"></div>                
+            </div>
+            
+            <div class = "row">
+                <div class="col-md-12 tests-container-style ml-4 mr-4"></div>
+            </div>
+            
+            <div class = "row">
+                <footer class="col-md-2 offset-md-5 m-4 mx-auto">@2021</footer>            
+            </div>
+        </div>
+        
+        <div class="modal fade" id="modal-window" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Форма авторизации</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3">
+                            <div class="offset-md-1 col-md-10">
+                                <label for="login" class="form-label">Имя пользователя</label>
+                                <input type="text" id="login" class="form-control">
+                                <div class="invalid-feedback">
+                                    Проверьте имя пользователя
+                                </div>
+                            </div>
+                            <div class="offset-md-1 col-md-10">
+                                <label for="passwd" class="form-label">Пароль</label>
+                                <input type="password" id="passwd" class="form-control">
+                                <div class="invalid-feedback">
+                                    Проверьте пароль
+                                </div>
+                            </div>
+                           
+                        </form>       
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="authorization_data_send()">Отправить</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>   
+        
+        <script type="text/javascript">
+            window.onload = function() {                
+                    update_page_content('non', 'non', -1); 
+                    
+                    $('#login').click(function(){
+                        change_style_jquery($(this), 0);
+                    });    
+                    $('#passwd').click(function(){
+                        change_style_jquery($(this), 0);
+                    });   
+                };
+        </script>
+    </body>
+</html>
+
+
